@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -N NEB
+#PBS -P ResCataReacCO2Conv
+#PBS -q defaultQ
+#PBS -o output.txt
+#PBS -j oe
+#PBS -l select=1:ncpus=8:mem=8GB
+#PBS -l walltime=05:00:00
+#PBS -m ea
+#PBS -M ocon2505@uni.sydney.edu.au
+
+cd "$PBS_O_WORKDIR"
+
+module load intel-mpi
+
+echo "START_TIME = `date +'%y-%m-%d %H:%M:%S %s'`"
+START_TIME=`date +%s`
+
+mpirun /home/ocon2505/VASP/VASP-5.4.4/bin/vasp_std
+E=`tail -1 OSZICAR`
+echo $E >> ENERGY.dat
+
+echo "END_TIME = `date +'%y-%m-%d %H:%M:%S %s'`" END_TIME=`date +%s`
+echo "RUN_TIME (hours)     = "`echo "$START_TIME $END_TIME" | awk '{printf("%.4f",($2-$1)/60.0/60.0)}'`
