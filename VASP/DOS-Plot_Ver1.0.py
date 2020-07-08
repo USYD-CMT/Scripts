@@ -355,6 +355,7 @@ def DOSorbital(Case):
     for i in range(0,len(Total)):
         for k in range(1,length):
             plt.plot(Total[i][0],Total[i][k], label=str(Species[i])+' '+orbitFormat[k-1]+'-Orbital') #Implement scalable species name
+    plt.axvline(x=0, linestyle='--', color='k', label='Fermi Level')
     plt.legend(loc='upper left', fontsize=6)
     plt.xlabel('Energy (eV)')
     plt.ylabel('Density of States (States/eV)')
