@@ -16,7 +16,7 @@ module load intel-mpi
 echo "START_TIME = `date +'%y-%m-%d %H:%M:%S %s'`"
 START_TIME=`date +%s`
 
-mpirun /home/ocon2505/VASP/VASP-5.4.4/bin/vasp_std
+mpirun /project/RDS-FSC-ResCataReacCO2Conv-RW/VASP/vasp_std
 E=`tail -1 OSZICAR`
 echo $E >> ENERGY.dat
 
