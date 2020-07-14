@@ -4,7 +4,7 @@
 #PBS -q defaultQ
 #PBS -o output.txt
 #PBS -j oe
-#PBS -l select=1:ncpus=8:mem=8GB
+#PBS -l select=1:ncpus=8:mem=32GB
 #PBS -l walltime=05:00:00
 #PBS -m ea
 #PBS -M ocon2505@uni.sydney.edu.au
@@ -16,7 +16,7 @@ module load intel-mpi
 echo "START_TIME = `date +'%y-%m-%d %H:%M:%S %s'`"
 START_TIME=`date +%s`
 
-mpirun /home/ocon2505/VASP/VASP-5.4.4/bin/vasp_std
+mpiexec.hydra -np 8 /project/RDS-FSC-ResCataReacCO2Conv-RW/VASP/vasp_std
 E=`tail -1 OSZICAR`
 echo $E >> ENERGY.dat
 
