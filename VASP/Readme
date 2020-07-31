@@ -1,3 +1,7 @@
 This folder should only be used for VASP scripts.
 
 The aselite.py script needs to be located in the same directory as the DOS_Plot script for it to run correctly.
+
+The energy.py and force.py plot scripts should be located in the same directory as you VASP data and ca be used to plot energy and max force values per iteration.
+
+The result.py script summaries the results from multiple VASP jobs into a csv file called result.csv. This script can be quite usedful to monitor calculation, inparticular to check whether the forces are converging.
