@@ -1,0 +1,5 @@
+Steps,CoPc pristine graphene,CoPc Stone-Wales defect graphene,CoPc Pyradine pristine graphene,CoPc pyradine Stone-Wales defect graphene,CoPc pyradine line defect graphene,CoPc pristine CNT,CoPc Stone-Wales defect CNT
+CoPc + CO$_2$ + H$_2$,0,0,0,0,0,0,0
+CoPc-COOH + $\frac{1}{2}$H$_2$,0.53500995,0.53720995,-0.29669,-0.23799,-0.30219,0.50100995,0.46660995
+CoPc-CO + H$_2$O,0.4589509,0.6939509,0.28575,0.30745,0.30505,0.4669509,0.3930509
+CoPc + CO + H$_2$O,0.7393379,0.7393379,0.73934,0.73934,0.73934,0.7393379,0.7393379
