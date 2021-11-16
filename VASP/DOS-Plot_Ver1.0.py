@@ -159,7 +159,7 @@ def write_spin(lines, index, nedos, natoms, ncols, efermi):
         while n < nedos:
             index +=1   
             e = float(lines[index].strip().split()[0])
-            e_f = e-efermi
+            e_f = e-efermi #Shifts energy values such that the fermi level is at 0 eV
             fdos.write('%15.8f ' % (e_f))
 
             for site in range(nsites):
@@ -177,6 +177,7 @@ if __name__ == '__main__':
     runSplit=userInput('Run Split Density of States Code y/n: ')
     if(runSplit=='y'):
         lines, index, natoms, nedos, efermi = read_dosfile()
+        print(f"Fermi level: {efermi}")
         index = write_dos0(lines, index, nedos, efermi)
         ## Test if a spin polarized calculation was performed ##
         line = lines[index+2].strip().split()
@@ -351,15 +352,18 @@ def DOSorbital(Case):
         negspin=[-x for x in list(DOStotal())[2]]
         plt.plot(list(DOStotal())[0],negspin,color='y',label='Total Spin Down Density of States')
         plt.fill_between(list(DOStotal())[0],negspin,step="pre", alpha=0.3, color='y')
-    sns.set_palette(sns.color_palette("hls", len(Total)*length)) #Use this line to change the colour palette of the plot
+    #sns.set_palette(sns.color_palette("hls", len(Total)*length)) #Use this line to change the colour palette of the plot
+    colors = sns.color_palette("hls", len(Total)*length)
+    ColorCount = 0
     for i in range(0,len(Total)):
         for k in range(1,length):
-            plt.plot(Total[i][0],Total[i][k], label=str(Species[i])+' '+orbitFormat[k-1]+'-Orbital') #Implement scalable species name
+            plt.plot(Total[i][0],Total[i][k], color=colors[ColorCount], label=str(Species[i])+' '+orbitFormat[k-1]+'-Orbital') #Implement scalable species name
+            ColorCount += 1
     plt.axvline(x=0, linestyle='--', color='k', label='Fermi Level')
     plt.legend(loc='upper left', fontsize=6)
     plt.xlabel('Energy (eV)')
     plt.ylabel('Density of States (States/eV)')
-    plt.title(Title)
+    #plt.title(Title)
     fig=plt.gcf()
     plt.show(block=False)
 

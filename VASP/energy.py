@@ -1,3 +1,9 @@
+########energy.py reads the OSZICAR file and plots the eletronic relaxation steps with an inset plot to remove large initial values#####
+####Date last updated: 07/08/2020####
+####Author: Oliver Conquest####
+####Institution: University of Sydney####
+####Group: Condensed Matter Theory Group####
+
 import csv
 import os
 import numpy as np
